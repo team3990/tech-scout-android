@@ -1,0 +1,146 @@
+<resources>
+    <string name="app_name">Tech Scout</string>
+
+    <!-- Shared -->
+    <string name="delete">Delete</string>
+    <string name="cancel">Cancel</string>
+    <string name="general_information">General</string>
+
+    <!-- Save Dialog -->
+    <string name="save">Save</string>
+    <string name="save_data_sheet">Save as data sheet</string>
+    <string name="data_sheet_name">Data Sheet Name</string>
+    <string name="data_sheet_saved">The data sheet was successfully saved as %s</string>
+    <string name="save_data_sheet_error">An error occurred while trying to save the data sheet named %s</string>
+    <string name="save_data_sheet_description">In order to save the data sheet, you need to give it a name.</string>
+
+    <!-- Delete Dialog -->
+    <string name="data_sheets_deleted">The data sheets were successfully deleted</string>
+    <string name="delete_selected_data_sheets">Delete Selected Sheets</string>
+    <string name="delete_selected_data_sheets_description">Are you sure you want to delete the selected data sheets ? This action cannot be undone.</string>
+
+    <!-- Bottom Navigation -->
+    <string name="pit_scouting">Pit</string>
+    <string name="game_scouting">Game</string>
+    <string name="data_sheet">Data Sheet</string>
+
+    <!-- Game Data Entry Fragment -->
+    <string name="endgame">Endgame</string>
+    <string name="mobility">Mobility</string>
+    <string name="comments">Comments</string>
+    <string name="your_name">Your name</string>
+    <string name="team_number">Team Number</string>
+    <string name="match_number">Match Number</string>
+    <string name="regional_name">Regional Name</string>
+    <string name="alliance_color">Alliance Color</string>
+    <string name="climb_duration">Climb Duration</string>
+    <string name="additional_data">Additional data</string>
+    <string name="rotation_control">Rotation Control</string>
+    <string name="position_control">Position Control</string>
+    <string name="autonomous_period">Autonomous Period</string>
+    <string name="teleoperated_period">Teloperated Period</string>
+    <string name="select_endgame_action">Select an action</string>
+    <string name="moves_to_initiation_line">Moves to Initiation Line</string>
+    <string name="scored_outer_port_power_cells">Scored Outer Port Power Cells</string>
+    <string name="scored_inner_port_power_cells">Scored Inner Port Power Cells</string>
+    <string name="scored_bottom_port_power_cells">Scored Bottom Port Power Cells</string>
+
+    <!-- Robot Data Entry Fragment -->
+    <string name="type">Type</string>
+    <string name="other">Other</string>
+    <string name="reach">Reach</string>
+    <string name="drive">Drive</string>
+    <string name="weight">Weight</string>
+    <string name="height">Height</string>
+    <string name="intake">Intake</string>
+    <string name="shooter">Shooter</string>
+    <string name="precision">Precision</string>
+    <string name="drivetrain_type">Drivetrain</string>
+    <string name="weight_and_dimensions">Weight and Dimensions</string>
+    <string name="power_cells_capacity">Power Cells Capacity</string>
+
+    <!-- Data Sheet List Fragment -->
+    <string name="upload_to_database">Upload to database</string>
+
+    <!-- Data Sheet Holder -->
+    <string name="created_by_name">Created by %s</string>
+
+    <!-- Arrays -->
+    <string-array name="mobility">
+        <item>Bad</item>
+        <item>Really Bad</item>
+        <item>Good</item>
+        <item>Really Good</item>
+    </string-array>
+
+    <string-array name="alliance_colors">
+        <item>Red</item>
+        <item>Blue</item>
+    </string-array>
+
+    <string-array name="endgame_actions">
+        <item>None</item>
+        <item>Park</item>
+        <item>Climb</item>
+    </string-array>
+
+    <string-array name="climb_durations">
+        <item>Slow</item>
+        <item>Medium</item>
+        <item>Fast</item>
+    </string-array>
+
+    <string-array name="drivetrain_types">
+        <item>Tank</item>
+        <item>Omni</item>
+        <item>Swerve</item>
+        <item>Mecanum</item>
+    </string-array>
+
+    <string-array name="intake_types">
+        <item>Wide</item>
+        <item>Narrow</item>
+        <item>None</item>
+    </string-array>
+
+    <string-array name="shooter_types">
+        <item>Catapult</item>
+        <item>Arc Shooter (vertical)</item>
+        <item>Linear Shooter (horizontal)</item>
+    </string-array>
+
+    <string-array name="shooter_precision">
+        <item>Mediocre</item>
+        <item>Good</item>
+        <item>Excellent</item>
+    </string-array>
+
+    <string-array name="power_ports">
+        <item>Outer Port / Inner Port</item>
+        <item>Bottom Port</item>
+        <item>Both</item>
+        <item>None</item>
+    </string-array>
+
+    <string-array name="power_cells_capacity">
+        <item>One</item>
+        <item>Two</item>
+        <item>Three</item>
+        <item>Four</item>
+        <item>Five</item>
+    </string-array>
+
+    <!-- Plurals -->
+
+    <plurals name="selection_count">
+        <item quantity="one">%d selection</item>
+        <item quantity="other">%d selections</item>
+    </plurals>
+
+    <plurals name="power_cell_count">
+        <item quantity="zero">None</item>
+        <item quantity="one">%d Power Cell</item>
+        <item quantity="other">%d Power Cells</item>
+    </plurals>
+
+</resources>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_item_game_scouting"
+        android:icon="@drawable/ic_videogame_asset_black_24dp"
+        android:title="@string/game_scouting" />
+    <item
+        android:id="@+id/menu_item_pit_scouting"
+        android:icon="@drawable/ic_assignment_black_24dp"
+        android:title="@string/pit_scouting" />
+    <item
+        android:id="@+id/menu_item_data_sheet"
+        android:icon="@drawable/ic_folder_black_24dp"
+        android:title="@string/data_sheet" />
+</menu>

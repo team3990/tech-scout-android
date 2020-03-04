@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="com.team3990.techscout.util.FloatConverter"/>
+        <import type="com.team3990.techscout.util.IntegerConverters"/>
+
+        <variable
+            name="viewmodel"
+            type="com.team3990.techscout.ui.RobotDataEntryViewModel" />
+    </data>
+
+    <!-- Fragment's UI-->
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.RobotDataEntryFragment">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fragment_robot_data_entry_saveFloatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="16dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/ic_save_white_24dp"
+            app:backgroundTint="@color/colorAccent" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/fragment_robot_data_entry_generalSectionTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/general_information"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/fragment_robot_data_entry_teamNumberTextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:hint="@string/team_number">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/fragment_robot_data_entry_teamNumberTextInputEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberSigned"
+                        android:text="@={IntegerConverters.setIntegerToString(viewmodel.robotData.teamNumber)}"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/fragment_robot_data_entry_regionalNameTextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:hint="@string/regional_name">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/fragment_robot_data_entry_regionalNameTextInputEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:text="@={viewmodel.robotData.regionalName}"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/fragment_robot_data_entry_driveSectionTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/drive"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/ExposedDropdownMenu"
+                    android:id="@+id/fragment_robot_data_entry_drivetrainTypeTextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:hint="@string/drivetrain_type">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/fragment_robot_data_entry_drivetrainTypeAutoCompleteTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:editable="false"
+                        android:imeOptions="flagNoExtractUi"
+                        app:onItemClick="@{(parent, view, position, id) -> viewmodel.drivetrainTypeClicked(position)}"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/fragment_robot_data_entry_intakeSectionTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/intake"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/ExposedDropdownMenu"
+                    android:id="@+id/fragment_robot_data_entry_intakeTypeTextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:hint="@string/type">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/fragment_robot_data_entry_intakeTypeAutoCompleteTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:editable="false"
+                        app:onItemClick="@{(parent, view, position, id) -> viewmodel.intakeTypeClicked(position)}"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/ExposedDropdownMenu"
+                    android:id="@+id/fragment_robot_data_entry_powerCellsCapacityTextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:hint="@string/power_cells_capacity"
+                    android:visibility="@{viewmodel.powerCellsCapacityDropdownVisibility}">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/fragment_robot_data_entry_powerCellsCapacityAutoCompleteTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:editable="false"
+                        app:onItemClick="@{(parent, view, position, id) -> viewmodel.powerCellsCapacityClicked(position)}"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/fragment_robot_data_entry_shooterSectionTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/shooter"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/ExposedDropdownMenu"
+                    android:id="@+id/fragment_robot_data_entry_shooterReachTextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:hint="@string/reach">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/fragment_robot_data_entry_shooterReachAutoCompleteTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:editable="false"
+                        app:onItemClick="@{(parent, view, position, id) -> viewmodel.shooterReachClicked(position)}"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/ExposedDropdownMenu"
+                    android:id="@+id/fragment_robot_data_entry_shooterTypeTextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:hint="@string/type"
+                    android:visibility="@{viewmodel.shooterDataDropdownVisibility}">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/fragment_robot_data_entry_shooterTypeAutoCompleteTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:editable="false"
+                        app:onItemClick="@{(parent, view, position, id) -> viewmodel.shooterTypeClicked(position)}"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/ExposedDropdownMenu"
+                    android:id="@+id/fragment_robot_data_entry_shooterPrecisionTextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:hint="@string/precision"
+                    android:visibility="@{viewmodel.shooterDataDropdownVisibility}">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/fragment_robot_data_entry_shooterPrecisionAutoCompleteTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:editable="false"
+                        app:onItemClick="@{(parent, view, position, id) -> viewmodel.shooterPrecisionClicked(position)}"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/fragment_robot_data_entry_dimensionsWeightSectionTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/weight_and_dimensions"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/fragment_robot_data_entry_weightTextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:hint="@string/weight">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:text="@={FloatConverter.setFloatToString(viewmodel.robotData.weight)}"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/fragment_robot_data_entry_heightTextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:hint="@string/height">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:text="@={FloatConverter.setFloatToString(viewmodel.robotData.height)}"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/fragment_robot_data_entry_otherSectionTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/other"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/fragment_robot_data_entry_commentTextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:hint="@string/comments">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/fragment_robot_data_entry_commentTextInputEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textMultiLine"
+                        android:text="@={viewmodel.robotData.comments}"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/fragment_robot_data_entry_scouterNameTextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:hint="@string/your_name">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/fragment_robot_data_entry_scouterNameTextInputEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:text="@={viewmodel.robotData.scouterName}"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </FrameLayout>
+
+</layout>

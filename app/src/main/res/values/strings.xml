@@ -50,14 +50,19 @@
     <string name="other">Other</string>
     <string name="reach">Reach</string>
     <string name="drive">Drive</string>
+    <string name="climb">Climb</string>
     <string name="weight">Weight</string>
     <string name="height">Height</string>
     <string name="intake">Intake</string>
     <string name="shooter">Shooter</string>
     <string name="precision">Precision</string>
+    <string name="buddy_climb">Buddy Climb</string>
     <string name="drivetrain_type">Drivetrain</string>
-    <string name="weight_and_dimensions">Weight and Dimensions</string>
+    <string name="one_shot_deployment">One Shot Deployment</string>
     <string name="power_cells_capacity">Power Cells Capacity</string>
+    <string name="weight_and_dimensions">Weight and Dimensions</string>
+    <string name="vision_assisted_aiming">Vision Assisted Aiming</string>
+    <string name="possesses_climb_mechanism">Possesses Climb Mechanism</string>
 
     <!-- Data Sheet List Fragment -->
     <string name="upload_to_database">Upload to database</string>
@@ -104,6 +109,7 @@
     </string-array>
 
     <string-array name="shooter_types">
+        <item>Turret</item>
         <item>Catapult</item>
         <item>Arc Shooter (vertical)</item>
         <item>Linear Shooter (horizontal)</item>
@@ -119,6 +125,12 @@
         <item>Outer Port / Inner Port</item>
         <item>Bottom Port</item>
         <item>Both</item>
+        <item>None</item>
+    </string-array>
+
+    <string-array name="buddy_climb_capacity">
+        <item>One Robot</item>
+        <item>Two Robots</item>
         <item>None</item>
     </string-array>
 

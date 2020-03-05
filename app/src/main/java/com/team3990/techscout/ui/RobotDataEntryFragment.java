@@ -41,7 +41,7 @@ public class RobotDataEntryFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final FragmentRobotDataEntryBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_robot_data_entry, container, false);
 
@@ -57,15 +57,21 @@ public class RobotDataEntryFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         // Set up the AutoCompleteTextView instances displayed by the view.
-        setupIntakeAutoCompleteTextView(view);
-        setupDrivetrainAutoCompleteTextView(view);
-        setupShooterTypeAutoCompleteTextView(view);
-        setupShooterReachAutoCompleteTextView(view);
-        setupShooterPrecisionAutoCompleteTextView(view);
-        setupPowerCellsCapacityAutoCompleteTextView(view);
+        setupAutoCompleteTextViews(view);
     }
 
     /** Methods */
+
+    private void setupAutoCompleteTextViews(View parent) {
+        setupIntakeAutoCompleteTextView(parent);
+        setupDrivetrainAutoCompleteTextView(parent);
+        setupShooterTypeAutoCompleteTextView(parent);
+        setupShooterReachAutoCompleteTextView(parent);
+        setupClimbDurationAutoCompleteTextView(parent);
+        setupShooterPrecisionAutoCompleteTextView(parent);
+        setupBuddyClimbCapacityAutoCompleteTextView(parent);
+        setupPowerCellsCapacityAutoCompleteTextView(parent);
+    }
 
     private void setupIntakeAutoCompleteTextView(View parent) {
         final AutoCompleteTextView intakeTypeAutoCompleteTextView = parent.findViewById(R.id.fragment_robot_data_entry_intakeTypeAutoCompleteTextView);
@@ -99,12 +105,28 @@ public class RobotDataEntryFragment extends Fragment {
         shooterReachAutoCompleteTextView.setAdapter(shooterReachAutoCompleteTextViewAdapter);
     }
 
+    private void setupClimbDurationAutoCompleteTextView(View parent) {
+        final AutoCompleteTextView climbDurationAutoCompleteTextView = parent.findViewById(R.id.fragment_robot_data_entry_climbDurationAutoCompleteTextView);
+        final ArrayAdapter climbDurationAutoCompleteTextViewAdapter = new ArrayAdapter<>(requireContext(), R.layout.dropdown_menu_popup_item, getResources().getStringArray(R.array.climb_durations));
+
+        // Set the auto shooterReachAutoCompleteTextView's adapter
+        climbDurationAutoCompleteTextView.setAdapter(climbDurationAutoCompleteTextViewAdapter);
+    }
+
     private void setupShooterPrecisionAutoCompleteTextView(View parent) {
         final AutoCompleteTextView shooterPrecisionAutoCompleteTextView = parent.findViewById(R.id.fragment_robot_data_entry_shooterPrecisionAutoCompleteTextView);
         final ArrayAdapter shooterPrecisionAutoCompleteTextViewAdapter = new ArrayAdapter<>(requireContext(), R.layout.dropdown_menu_popup_item, getResources().getStringArray(R.array.shooter_precision));
 
         // Set the auto shooterReachAutoCompleteTextView's adapter
         shooterPrecisionAutoCompleteTextView.setAdapter(shooterPrecisionAutoCompleteTextViewAdapter);
+    }
+
+    private void setupBuddyClimbCapacityAutoCompleteTextView(View parent) {
+        final AutoCompleteTextView buddyClimbCapacityAutoCompleteTextView = parent.findViewById(R.id.fragment_robot_data_entry_buddyClimbCapacityAutoCompleteTextView);
+        final ArrayAdapter buddyClimbCapacityAutoCompleteTextViewAdapter = new ArrayAdapter<>(requireContext(), R.layout.dropdown_menu_popup_item, getResources().getStringArray(R.array.buddy_climb_capacity));
+
+        // Set the auto shooterReachAutoCompleteTextView's adapter
+        buddyClimbCapacityAutoCompleteTextView.setAdapter(buddyClimbCapacityAutoCompleteTextViewAdapter);
     }
 
     private void setupPowerCellsCapacityAutoCompleteTextView(View parent) {

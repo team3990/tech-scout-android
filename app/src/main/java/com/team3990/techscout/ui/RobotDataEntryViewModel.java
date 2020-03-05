@@ -1,5 +1,6 @@
 package com.team3990.techscout.ui;
 
+import android.util.Log;
 import android.view.View;
 
 import androidx.lifecycle.LiveData;
@@ -22,6 +23,7 @@ public final class RobotDataEntryViewModel extends ViewModel {
 
     private final MutableLiveData<Integer> mShooterDataDropdownVisibility;
     private final MutableLiveData<Integer> mPowerCellsCapacityDropdownVisibility;
+    private final MutableLiveData<Integer> mHasVisionAssistedAimingCheckboxVisibility;
 
     /**
      * Constructor
@@ -34,6 +36,7 @@ public final class RobotDataEntryViewModel extends ViewModel {
         );
         mShooterDataDropdownVisibility = new MutableLiveData<>(View.GONE);
         mPowerCellsCapacityDropdownVisibility = new MutableLiveData<>(View.GONE);
+        mHasVisionAssistedAimingCheckboxVisibility = new MutableLiveData<>(View.GONE);
     }
 
     /** Getters */
@@ -42,11 +45,17 @@ public final class RobotDataEntryViewModel extends ViewModel {
         return mRobotData;
     }
 
-    public MutableLiveData<Integer> getShooterDataDropdownVisibility() {
+    public LiveData<Integer> getShooterDataDropdownVisibility() {
         return mShooterDataDropdownVisibility;
     }
 
-    public LiveData<Integer> getPowerCellsCapacityDropdownVisibility() { return mPowerCellsCapacityDropdownVisibility; }
+    public LiveData<Integer> getPowerCellsCapacityDropdownVisibility() {
+        return mPowerCellsCapacityDropdownVisibility;
+    }
+
+    public LiveData<Integer> getHasVisionAssistedAimingCheckboxVisibility() {
+        return mHasVisionAssistedAimingCheckboxVisibility;
+    }
 
     /** Methods */
 
@@ -71,11 +80,13 @@ public final class RobotDataEntryViewModel extends ViewModel {
         if (mRobotData.getValue() == null) return;
 
         // React to the changes
-        if (position == 0) { // CATAPULT
+        if (position == 0) { // TURRET
+            mRobotData.getValue().setShooterType(ShooterType.TURRET);
+        } else if (position == 1) { // CATAPULT
             mRobotData.getValue().setShooterType(ShooterType.CATAPULT);
-        } else if (position == 1) { // ARC
+        } else if (position == 2) { // ARC
             mRobotData.getValue().setShooterType(ShooterType.ARC);
-        } else if (position == 2) { // LINEAR
+        } else if (position == 3) { // LINEAR
             mRobotData.getValue().setShooterType(ShooterType.LINEAR);
         }
     }
@@ -87,19 +98,24 @@ public final class RobotDataEntryViewModel extends ViewModel {
         if (position == 0) { // OUTER / INNER PORT
             mRobotData.getValue().setShooterReach(ShooterReach.HIGH_GOAL);
             mShooterDataDropdownVisibility.setValue(View.VISIBLE);
+            mHasVisionAssistedAimingCheckboxVisibility.setValue(View.VISIBLE);
         } else if (position == 1) { // BOTTOM PORT
             mRobotData.getValue().setShooterReach(ShooterReach.LOW_GOAL);
             mRobotData.getValue().setShooterType(ShooterType.NONE);
             mRobotData.getValue().setShooterPrecision(ShooterPrecision.NONE);
             mShooterDataDropdownVisibility.setValue(View.GONE);
+            mHasVisionAssistedAimingCheckboxVisibility.setValue(View.VISIBLE);
         } else if (position == 2) { // BOTH
-            mRobotData.getValue().setShooterReach(ShooterReach.LOW_GOAL);
+            mRobotData.getValue().setShooterReach(ShooterReach.BOTH);
             mShooterDataDropdownVisibility.setValue(View.VISIBLE);
+            mHasVisionAssistedAimingCheckboxVisibility.setValue(View.VISIBLE);
         } else if (position == 3) { // NONE
             mRobotData.getValue().setShooterReach(ShooterReach.NONE);
             mRobotData.getValue().setShooterType(ShooterType.NONE);
+            mRobotData.getValue().setHasVisionAssistedAiming(false);
             mRobotData.getValue().setShooterPrecision(ShooterPrecision.NONE);
             mShooterDataDropdownVisibility.setValue(View.GONE);
+            mHasVisionAssistedAimingCheckboxVisibility.setValue(View.GONE);
         }
     }
 

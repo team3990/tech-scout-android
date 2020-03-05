@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import com.team3990.techscout.enumeration.BuddyClimbCapacity;
+import com.team3990.techscout.enumeration.ClimbDuration;
 import com.team3990.techscout.enumeration.DrivetrainType;
 import com.team3990.techscout.enumeration.IntakeType;
 import com.team3990.techscout.enumeration.PowerCellsCapacity;
@@ -49,6 +51,24 @@ public final class RobotData {
     private float height;
 
     /**
+     * A boolean indicating whether or not the robot is able
+     * to climb at the end of the game
+     * */
+    private boolean climbs;
+
+    /**
+     * A boolean indicating whether or not the aiming is vision
+     * assisted
+     * */
+    private boolean hasVisionAssistedAiming;
+
+    /**
+     * A boolean indicating whether or not the climb can be retracted after
+     * being deployed
+     * */
+    private boolean climbDeploymentIrreversible;
+
+    /**
      * An IntakeType enum case representing the intake mechanism used
      * by the robot to collect Power Cells
      * */
@@ -67,16 +87,29 @@ public final class RobotData {
     private ShooterReach shooterReach = ShooterReach.NONE;
 
     /**
+     * A ClimbDuration enum case representing the amount of time
+     * it takes for the robot to climb
+     * */
+    private ClimbDuration climbDuration = ClimbDuration.NONE;
+
+    /**
      * A ShooterPrecision enum case representing the precision of
      * the shooting mechanism
      * */
     private ShooterPrecision shooterPrecision = ShooterPrecision.NONE;
+
 
     /**
      * A PowerCellsCapacity enum case representing the amount of Power Cells
      * the robot can accumulate at the same time
      * */
     private PowerCellsCapacity powerCellsCapacity = PowerCellsCapacity.NONE;
+
+    /**
+     * A BuddyClimbCapacity enum case representing the amount of robots the
+     * robot can climb with
+     * */
+    private BuddyClimbCapacity buddyClimbCapacity = BuddyClimbCapacity.NONE;
 
     /**
      * A DrivetrainType enum case representing the drive train used
@@ -132,6 +165,18 @@ public final class RobotData {
         return height;
     }
 
+    public boolean getClimbs() {
+        return climbs;
+    }
+
+    public boolean getHasVisionAssistedAiming() {
+        return hasVisionAssistedAiming;
+    }
+
+    public boolean getClimbDeploymentIrreversible() {
+        return climbDeploymentIrreversible;
+    }
+
     public String getComments() {
         return comments;
     }
@@ -156,6 +201,18 @@ public final class RobotData {
 
     public void setHeight(float height) {
         this.height = height;
+    }
+
+    public void setClimbs(boolean climbs) {
+        this.climbs = climbs;
+    }
+
+    public void setHasVisionAssistedAiming(boolean hasVisionAssistedAiming) {
+        this.hasVisionAssistedAiming = hasVisionAssistedAiming;
+    }
+
+    public void setClimbDeploymentIrreversible(boolean climbDeploymentIrreversible) {
+        this.climbDeploymentIrreversible = climbDeploymentIrreversible;
     }
 
     public void setIntakeType(IntakeType intakeType) {

@@ -183,6 +183,14 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <CheckBox
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/vision_assisted_aiming"
+                    android:checked="@{viewmodel.robotData.hasVisionAssistedAiming}"
+                    android:visibility="@{viewmodel.hasVisionAssistedAimingCheckboxVisibility}"/>
+
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/ExposedDropdownMenu"
                     android:id="@+id/fragment_robot_data_entry_shooterTypeTextInputLayout"
@@ -216,6 +224,62 @@
                         android:layout_height="wrap_content"
                         android:editable="false"
                         app:onItemClick="@{(parent, view, position, id) -> viewmodel.shooterPrecisionClicked(position)}"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/fragment_robot_data_entry_climbSectionTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/climb"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <CheckBox
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/possesses_climb_mechanism"
+                    android:checked="@{viewmodel.robotData.climbs}"/>
+
+                <CheckBox
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/one_shot_deployment"
+                    android:checked="@{viewmodel.robotData.climbDeploymentIrreversible}"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/ExposedDropdownMenu"
+                    android:id="@+id/fragment_robot_data_entry_buddyClimbCapacityTextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:hint="@string/buddy_climb">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/fragment_robot_data_entry_buddyClimbCapacityAutoCompleteTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:editable="false"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/ExposedDropdownMenu"
+                    android:id="@+id/fragment_robot_data_entry_climbDurationTextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:hint="@string/climb_duration">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/fragment_robot_data_entry_climbDurationAutoCompleteTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:editable="false"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
